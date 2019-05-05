@@ -63,7 +63,7 @@ func initialize(id []byte, width uint64, difficulty proving.Difficulty,
 
 	if width > maxWidth {
 		return nil, nil,
-			fmt.Errorf("requested width (%d) is greater than supported width (%d)", width, maxWidth)
+			fmt.Errorf("requested width (%v) is greater than supported width (%v)", width, maxWidth)
 	}
 	cacheWriter := cache.NewWriter(cache.MinHeightPolicy(7), cache.MakeSliceReadWriterFactory())
 	merkleTree := merkle.NewTreeBuilder().
