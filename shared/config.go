@@ -10,6 +10,7 @@ const (
 	DefaultLabelsLogRate                           = 5000000
 	DefaultMaxFilesParallelism                     = 1
 	DefaultMaxInFileParallelism                    = 6
+	DefaultMaxReadParallelism                      = 6
 	DefaultSpacePerUnit                            = 1 << 20 // 1MB. Temporary value.
 	DefaultFileSize                                = 1 << 20 // 1MB. Temporary value.
 	DefaultDifficulty                              = MinDifficulty
@@ -26,6 +27,7 @@ type Config struct {
 	LabelsLogRate        uint64 `mapstructure:"lograte"`
 	MaxFilesParallelism  uint   `mapstructure:"parallel-files"`
 	MaxInFileParallelism uint   `mapstructure:"parallel-infile"`
+	MaxReadParallelism   uint   `mapstructure:"parallel-read"`
 
 	// Protocol params.
 	SpacePerUnit                            uint64 `mapstructure:"space"`
@@ -41,6 +43,7 @@ func DefaultConfig() *Config {
 		LabelsLogRate:                           DefaultLabelsLogRate,
 		MaxFilesParallelism:                     DefaultMaxFilesParallelism,
 		MaxInFileParallelism:                    DefaultMaxInFileParallelism,
+		MaxReadParallelism:                      DefaultMaxReadParallelism,
 		SpacePerUnit:                            DefaultSpacePerUnit,
 		FileSize:                                DefaultFileSize,
 		Difficulty:                              DefaultDifficulty,
