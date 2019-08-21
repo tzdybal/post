@@ -530,6 +530,10 @@ func (init *Initializer) State() (state, uint64, error) {
 	}
 
 	if !configMatch(&metadata.Cfg, init.cfg) {
+		init.logger.Info("found SpacePerUnit: %v, given SpacePerUnit: %v", metadata.Cfg.SpacePerUnit, init.cfg.SpacePerUnit)
+		init.logger.Info("found FileSize: %v, given FileSize: %v", metadata.Cfg.FileSize, init.cfg.FileSize)
+		init.logger.Info("found Difficulty: %v, given Difficulty: %v", metadata.Cfg.Difficulty, init.cfg.Difficulty)
+		init.logger.Info("found NumProvenLabels: %v, given NumProvenLabels: %v", metadata.Cfg.NumProvenLabels, init.cfg.NumProvenLabels)
 		return 0, 0, ErrStateConfigMismatch
 	}
 
@@ -595,6 +599,7 @@ func (init *Initializer) LoadMetadata() (*metadata, error) {
 }
 
 func (init *Initializer) isInitFile(file os.FileInfo) bool {
+	init.logger.Info("## found file: %v, size: %v", file.Name(), file.Size())
 	return shared.IsInitFile(init.id, file)
 }
 

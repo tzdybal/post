@@ -52,7 +52,9 @@ func (p *Prover) GenerateProof(challenge Challenge) (proof *Proof, err error) {
 }
 
 func (p *Prover) generateProof(challenge Challenge) (*Proof, error) {
-	err := initialization.NewInitializer(p.cfg, p.id).VerifyCompleted()
+	init := initialization.NewInitializer(p.cfg, p.id)
+	init.SetLogger(p.logger)
+	err := init.VerifyCompleted()
 	if err != nil {
 		return nil, err
 	}
